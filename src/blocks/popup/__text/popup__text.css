@@ -1,0 +1,10 @@
+.popup__text {
+  font-family: 'inter', sans-serif;
+  color: #fff;
+  font-size: 12px;
+  line-height: 15px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 150px;
+}

@@ -1,0 +1,21 @@
+.profile__avatar {
+  border-radius: 50%;
+  width: 120px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  transition: opacity .3s;
+  z-index: 2;
+}
+
+.profile__avatar:hover {
+  opacity: .2;
+  cursor: pointer;
+  background-image: url('../../../images/pencil.svg');
+  background-size: cover;
+}
+
+@media screen and (min-width: 1024px) {
+  .profile__avatar {
+    align-self: flex-start;
+  }
+}

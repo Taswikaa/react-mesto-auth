@@ -1,0 +1,13 @@
+.profile__pencil {
+  width: 26px;
+  height: 26px;
+  position: absolute;
+  top: 84px;
+  z-index: 1;
+}
+
+@media screen and (min-width: 1024px) {
+  .profile__pencil {
+    left: 50px;
+  }
+}

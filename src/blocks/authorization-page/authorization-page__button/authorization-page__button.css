@@ -1,0 +1,15 @@
+.authorization-page__button {
+  font-family: 'inter', sans-serif;
+  background-color: transparent;
+  font-size: 18px;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  color: #fff;
+  transition: opacity .5s;
+}
+
+.authorization-page__button:hover {
+  cursor: pointer;
+  opacity: .6;
+}

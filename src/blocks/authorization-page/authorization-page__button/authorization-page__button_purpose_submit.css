@@ -1,0 +1,21 @@
+.authorization-page__button_purpose_submit {
+  background-color: #fff;
+  color: #000;
+  font-size: 16px;
+  padding: 14px 0;
+  margin: 143px 0 20px;
+  transition: opacity .5s;
+}
+
+.authorization-page__button_purpose_submit:hover {
+  cursor: pointer;
+  opacity: .85;
+}
+
+@media screen and (min-width: 768px) {
+  .authorization-page__button_purpose_submit {
+    font-size: 18px;
+    line-height: 22px;
+    margin: 186px 0 15px;
+  }
+}

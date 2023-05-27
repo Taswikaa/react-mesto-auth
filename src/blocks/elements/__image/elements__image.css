@@ -1,0 +1,8 @@
+.elements__image {
+  width: 282px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  cursor: pointer;
+}

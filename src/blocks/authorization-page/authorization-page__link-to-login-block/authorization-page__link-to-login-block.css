@@ -1,0 +1,7 @@
+.authorization-page__link-to-login-block {
+  display: flex;
+  column-gap: 6px;
+  align-items: center;
+  font-size: 14px;
+  line-height: 17px;
+}
