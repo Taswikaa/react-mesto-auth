@@ -29,11 +29,14 @@ const Register = ({ handleRegistrationEnd }) => {
 
     auth.register(email, password)
     .then(res => {
-      handleRegistrationEnd();
+      console.log('удалось зарегистрироваться');
+      handleRegistrationEnd(true);
       navigate('/sign-in', {replace: true});
-      console.log(res);
     })
-    .catch((err) => console.log('qweqweqw'))
+    .catch(err => {
+      // console.log('Не удалось зарегистрироваться', err);
+      handleRegistrationEnd(false);
+    })
   }
 
   return (

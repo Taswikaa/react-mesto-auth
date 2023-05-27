@@ -11,7 +11,7 @@ export const register = (email, password) => {
     body: JSON.stringify({ email, password })
   })
   .then(response => {
-    response.ok ? response.json() : Promise.reject(`Ошибка: ${response.status}`)
+    return response.ok ? response.json() : Promise.reject(`Ошибка: ${response.status}`)
   })      
 }
 

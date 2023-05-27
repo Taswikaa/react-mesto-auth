@@ -4,7 +4,7 @@ import AuthorizationPage from './AuthorizationPage';
 import * as auth from '../utils/auth.js';
 import { useNavigate } from 'react-router-dom';
 
-const Login = ({ loginUser }) => {
+const Login = ({ loginUser, handleRegistrationEnd }) => {
 
   const navigate = useNavigate();
 
@@ -36,10 +36,15 @@ const Login = ({ loginUser }) => {
         loginUser(data.data.email);
         navigate('/', {replace: true});
       })
-      .catch(err => console.log(`Ошибка ${err}, не удалось авторизоваться`))
+      .catch(err => {
+        console.log(`Ошибка ${err}, не удалось авторизоваться`);
+        handleRegistrationEnd();
+      })
       
     })
-    .catch((err) => console.log(`Ошибка ${err}, не удалось авторизоваться`))
+    .catch((err) => {
+      handleRegistrationEnd();
+    })
   }
 
   return (

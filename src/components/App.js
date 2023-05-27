@@ -25,10 +25,6 @@ function App() {
     setEditProfilePopupOpen(true);
   }
 
-  const handleRegistrationEnd = function() {
-    setIsInfoPopupOpened(true);
-  }
-
   const handleEditAvatarClick = function() {
     setEditAvatarPopupOpen(true);
   }
@@ -97,7 +93,12 @@ function App() {
   const [cards, setCards] = useState([]);
 
   const [loggedIn, setLoggedIn] = useState(false);
+  const [isRegistrationSuccess, setIsRegistrationSuccess] = useState(null);
   const [emailText, setEmailText] = useState('');
+
+  const handleRegistrationEnd = function(isSuccess) {
+    isSuccess ? setIsRegistrationSuccess(true) : setIsRegistrationSuccess(false);
+  }
 
   const loginUser = function(emailText) {
     setLoggedIn(true);
@@ -112,7 +113,7 @@ function App() {
   }
 
   const tokenCheck = () => {
-    if (localStorage.getItem('token')){
+    if (localStorage.getItem('token')) {
       const jwt = localStorage.getItem('token');
   
       auth.getLoggedUserInfo(jwt)
@@ -220,13 +221,13 @@ function App() {
           <Route path="/sign-up" element={(
             <>
               <Register handleRegistrationEnd={handleRegistrationEnd} key={Register} />
-              <InfoPopup isOpen={isInfoPopupOpened} onClose={closeAllPopups} key={InfoPopup} />
+              <InfoPopup isOpen={isInfoPopupOpened} onClose={closeAllPopups} key={InfoPopup} isSuccess={isRegistrationSuccess} />
             </>
           )} />
           <Route path="/sign-in" element={(
             <>
-              <Login key={Login} loginUser={loginUser} />
-              <InfoPopup isOpen={isInfoPopupOpened} onClose={closeAllPopups} key={InfoPopup} />
+              <Login key={Login} loginUser={loginUser} handleRegistrationEnd={handleRegistrationEnd} />
+              <InfoPopup isOpen={isInfoPopupOpened} onClose={closeAllPopups} isSuccess={false} key={InfoPopup} />
             </>
           )} />
 
