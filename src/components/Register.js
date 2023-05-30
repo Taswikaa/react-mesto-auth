@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import * as auth from '../utils/auth.js';
 
-const Register = ({ handleRegistrationEnd }) => {
+const Register = ({ setInfoTooltipStatus }) => {
 
   const navigate = useNavigate();
 
@@ -30,12 +30,12 @@ const Register = ({ handleRegistrationEnd }) => {
     auth.register(email, password)
     .then(res => {
       console.log('удалось зарегистрироваться');
-      handleRegistrationEnd(true);
+      setInfoTooltipStatus(true);
       navigate('/sign-in', {replace: true});
     })
     .catch(err => {
       // console.log('Не удалось зарегистрироваться', err);
-      handleRegistrationEnd(false);
+      setInfoTooltipStatus(false);
     })
   }
 

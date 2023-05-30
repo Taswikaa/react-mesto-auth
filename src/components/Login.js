@@ -4,7 +4,7 @@ import AuthorizationPage from './AuthorizationPage';
 import * as auth from '../utils/auth.js';
 import { useNavigate } from 'react-router-dom';
 
-const Login = ({ loginUser, handleRegistrationEnd }) => {
+const Login = ({ loginUser, setInfoTooltipStatus }) => {
 
   const navigate = useNavigate();
 
@@ -30,20 +30,13 @@ const Login = ({ loginUser, handleRegistrationEnd }) => {
     auth.authorize(email, password)
     .then(res => {
       localStorage.setItem('token', res.token);
-
-      auth.getLoggedUserInfo(res.token)
-      .then(data => {
-        loginUser(data.data.email);
+      if (res.token) {
+        loginUser(email);
         navigate('/', {replace: true});
-      })
-      .catch(err => {
-        console.log(`Ошибка ${err}, не удалось авторизоваться`);
-        handleRegistrationEnd();
-      })
-      
+      }
     })
     .catch((err) => {
-      handleRegistrationEnd();
+      setInfoTooltipStatus();
     })
   }
 

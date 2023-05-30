@@ -1,0 +1,16 @@
+.header__text {
+  font-family: 'inter', sans-serif;
+  color: #ffffff;
+  margin: 0;
+  font-size: 18px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 120px;
+}
+
+@media screen and (min-width: 724px) {
+  .header__text {
+    max-width: 250px;
+  }
+}

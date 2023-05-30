@@ -29,7 +29,7 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, onCardLike
         <ul className="elements__wrapper">
           {
             cards.length && cards.map(el => 
-              (<Card el={el} onCardClick={onCardClick} key={el._id} onCardLike={onCardLike} onCardDelete={onCardDelete} />)
+              (<Card cardData={el} onCardClick={onCardClick} key={el._id} onCardLike={onCardLike} onCardDelete={onCardDelete} />)
             )
           }
         </ul>

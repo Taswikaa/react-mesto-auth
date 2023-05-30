@@ -1,24 +1,24 @@
 import React from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-function Card({ el, onCardClick, onCardLike, onCardDelete }) {
+function Card({ cardData, onCardClick, onCardLike, onCardDelete }) {
 
   const handleCardClick = function() {
-    onCardClick(el);
+    onCardClick(cardData);
   }
 
   const handleLikeClick = function() {
-    onCardLike(el);
+    onCardLike(cardData);
   }
 
   const handleDeleteClick = function() {
-    onCardDelete(el);
+    onCardDelete(cardData);
   }
 
   const userData = React.useContext(CurrentUserContext);
 
-  const isOwn = el.owner._id === userData._id;
-  const isLiked = el.likes.some(i => i._id === userData._id);
+  const isOwn = cardData.owner._id === userData._id;
+  const isLiked = cardData.likes.some(i => i._id === userData._id);
 
   const cardLikeButtonClassName = ( 
     `button elements__favorite ${isLiked && 'elements__favorite_active'}` 
@@ -28,12 +28,12 @@ function Card({ el, onCardClick, onCardLike, onCardDelete }) {
     <li className="elements__item">
       <div className="elements__card">
         {isOwn && <button className="button elements__delete-icon" onClick={handleDeleteClick}></button>}
-        <img className="elements__image" src={el.link} alt={el.name} onClick={handleCardClick} />
+        <img className="elements__image" src={cardData.link} alt={cardData.name} onClick={handleCardClick} />
         <div className="elements__info">
-          <h2 className="elements__name">{el.name}</h2>
+          <h2 className="elements__name">{cardData.name}</h2>
           <div className="elements__likes">
             <button className={cardLikeButtonClassName} type="button" onClick={handleLikeClick}></button>
-            <p className="elements__like-counter">{el.likes.length}</p>
+            <p className="elements__like-counter">{cardData.likes.length}</p>
           </div>
         </div>
       </div>

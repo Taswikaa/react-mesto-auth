@@ -2,6 +2,14 @@ import React from 'react';
 
 export const BASE_URL = 'https://auth.nomoreparties.co';
 
+const getResponseData = function(res) {
+  if (res.ok) {
+    return res.json();
+  }
+
+  return Promise.reject(res.status);
+}
+
 export const register = (email, password) => {
   return fetch(`${BASE_URL}/signup`, {
     method: 'POST',
@@ -11,7 +19,7 @@ export const register = (email, password) => {
     body: JSON.stringify({ email, password })
   })
   .then(response => {
-    return response.ok ? response.json() : Promise.reject(`Ошибка: ${response.status}`)
+    return getResponseData(response);
   })      
 }
 
@@ -24,7 +32,7 @@ export const authorize = (email, password) => {
     body: JSON.stringify({ email, password })
   })
   .then(response => {
-    return response.json();
+    return getResponseData(response);
   })
 }
 
@@ -36,7 +44,7 @@ export const getLoggedUserInfo = (jwt) => {
       "Authorization" : `Bearer ${jwt}`
     }
   }) 
-  .then(res => {
-    return res.json();
+  .then(response => {
+    return getResponseData(response);
   })
 }

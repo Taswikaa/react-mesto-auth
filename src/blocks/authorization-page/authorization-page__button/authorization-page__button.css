@@ -1,7 +1,7 @@
 .authorization-page__button {
   font-family: 'inter', sans-serif;
   background-color: transparent;
-  font-size: 18px;
+  font-size: 14px;
   text-decoration: none;
   border: none;
   outline: none;
@@ -12,4 +12,10 @@
 .authorization-page__button:hover {
   cursor: pointer;
   opacity: .6;
+}
+
+@media screen and (min-width: 724px) {
+  .authorization-page__button {
+    font-size: 18px;
+  }
 }
