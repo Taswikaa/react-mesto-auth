@@ -141,12 +141,13 @@ function App() {
 
   useEffect(() => {
     if (loggedIn) {
-      const getUserInfo = api.getUserInfo();
-      const getInitialCards = api.getInitialCards();
-      Promise.all([getUserInfo, getInitialCards])
-      .then(res => {
-        setCurrentUser(res[0]);
-        setCards(res[1]);
+      const userInfoPromise = api.getUserInfo();
+      const initialCardsPromise = api.getInitialCards();
+
+      Promise.all([userInfoPromise, initialCardsPromise])
+      .then(([userInfo, cards]) => {
+        setCurrentUser(userInfo);
+        setCards(cards);
       })
       .catch(err => {
         console.log('Ошибка получения данных', err);
@@ -263,14 +264,23 @@ function App() {
           )}/>
           <Route path="/sign-up" element={(
             <>
-              <Header isAuthorizationPage={true} buttonText='Войти' isLoginPage={false} />
+              <Header 
+                isAuthorizationPage={true} 
+                buttonText='Войти' 
+                isLoginPage={false} 
+                route='/sign-in' 
+              />
               <Register setInfoTooltipStatus={setInfoTooltipStatus} />
             </>
           )} />
           <Route path="/sign-in" element={(
             <>
-              <Header isAuthorizationPage={true} buttonText='Зарегистрироваться' isLoginPage={true} />
-              <Login key={Login} loginUser={loginUser} setInfoTooltipStatus={setInfoTooltipStatus} />
+              <Header 
+                isAuthorizationPage={true} buttonText='Зарегистрироваться' 
+                isLoginPage={true} 
+                route='/sign-up' 
+              />
+              <Login loginUser={loginUser} setInfoTooltipStatus={setInfoTooltipStatus} />
             </>
           )} />
           <Route path="*" element={loggedIn ? <Navigate to="/" replace /> : <Navigate to="/sign-in" replace />} />

@@ -29,8 +29,8 @@ const Login = ({ loginUser, setInfoTooltipStatus }) => {
 
     auth.authorize(email, password)
     .then(res => {
-      localStorage.setItem('token', res.token);
       if (res.token) {
+        localStorage.setItem('token', res.token);
         loginUser(email);
         navigate('/', {replace: true});
       }

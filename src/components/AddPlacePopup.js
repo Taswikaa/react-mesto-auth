@@ -23,7 +23,7 @@ const AddPlacePopup = function({ isOpen, onClose, onAddCard, isLoading }) {
   useEffect(() => {
     setNameValue('');
     setLinkValue('');
-  }, [onClose, isOpen])
+  }, [isOpen])
 
   return (
     <PopupWithForm
